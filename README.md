@@ -36,3 +36,8 @@ Voix neuronales Microsoft (Denise, Sonia, Elvira, Zariyah) si Internet est dispo
 
 Python 3.10+ requis. Double-cliquer sur `Lancer_teleprompteur.bat` (installe les modules de `requirements.txt`).
 Pour reconstruire l'exécutable : `Construire_exe.bat`.
+
+## Publier une nouvelle version
+
+Changer le numéro dans le fichier `VERSION` (par exemple `v1.1`) et pousser sur `main` :
+GitHub construit `Teleprompteur.exe` sous Windows et crée la release correspondante.

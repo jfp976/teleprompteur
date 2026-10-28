@@ -1,9 +1,11 @@
-# Pousser un tag vX.Y construit Teleprompteur.exe sous Windows et le publie en release.
+# Modifier le fichier VERSION sur main construit Teleprompteur.exe sous Windows
+# et le publie dans une release portant ce numéro (le tag est créé automatiquement).
 name: Release
 
 on:
   push:
-    tags: ["v*"]
+    branches: [main]
+    paths: [VERSION]
 
 permissions:
   contents: write
@@ -18,6 +20,12 @@ jobs:
           python-version: "3.12"
       - run: pip install -r requirements.txt pyinstaller
       - run: pyinstaller --noconfirm --onefile --windowed --name Teleprompteur --collect-data arabic_reshaper --hidden-import win32com.client teleprompteur.py
+      - id: version
+        shell: bash
+        run: echo "tag=$(tr -d '[:space:]' < VERSION)" >> "$GITHUB_OUTPUT"
       - uses: softprops/action-gh-release@v2
         with:
+          tag_name: ${{ steps.version.outputs.tag }}
+          name: Téléprompteur ${{ steps.version.outputs.tag }}
+          target_commitish: ${{ github.sha }}
           files: dist/Teleprompteur.exe
