@@ -1,0 +1,33 @@
+TÉLÉPROMPTEUR — installation (Windows 10 / 11)
+================================================
+
+1. Installer Python 3.10 ou plus récent depuis https://www.python.org
+   (cocher « Add python.exe to PATH » pendant l'installation).
+2. Double-cliquer sur Lancer_teleprompteur.bat
+   - le premier lancement installe les modules nécessaires (connexion Internet requise) ;
+   - on peut aussi glisser un fichier .txt/.pdf/.doc/.docx sur le .bat pour l'ouvrir directement.
+
+Voix de synthèse (F2)
+- Par défaut : voix neuronale Microsoft « Denise » (FR), « Sonia » (EN), « Elvira » (ES),
+  « Zariyah » (arabe),
+  très naturelle, mais qui nécessite Internet.
+- Sans Internet : bascule automatique sur les voix installées dans Windows. La voix
+  « Virginie » (ScanSoft) est choisie en priorité si elle est installée, sinon Hortense / Julie.
+- Pour l'anglais, l'espagnol et l'arabe hors ligne, ajouter les voix dans
+  Paramètres > Heure et langue > Voix (voix arabes Windows : Hoda, Naayf).
+
+Textes en arabe
+- Un document majoritairement en arabe est détecté à l'ouverture : il s'affiche de droite
+  à gauche, aligné à droite, l'interface et la voix passent en arabe, et le karaoké
+  colore le texte de droite à gauche. F4 permet de revenir à une autre langue d'interface.
+- Pour corriger un texte arabe, cliquer dessus : il s'affiche alors dans sa forme
+  d'origine le temps de l'édition (Échap pour revenir au défilement).
+
+Fichiers .doc : la lecture passe par Microsoft Word (doit être installé).
+Enregistrement des modifications : proposé à la fermeture (ou à l'ouverture d'un autre
+fichier), au format .txt ou .docx. Les PDF et .doc sont enregistrés en .docx par défaut
+(le fichier d'origine n'est jamais écrasé sans votre accord).
+
+Créer un .exe autonome (facultatif) :
+   py -m pip install pyinstaller
+   py -m PyInstaller --onefile --windowed --name Teleprompteur teleprompteur.py
